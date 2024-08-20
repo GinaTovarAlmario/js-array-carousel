@@ -14,6 +14,7 @@
     height: 400px;
     width: 600px;
     margin: 30px auto;
+    position: relative;
 }
 
 /* devo roa an{dare a controllare img */
@@ -29,4 +30,19 @@
 /* devo vedere una img alla volta */
 #carousel img.active{
     display: block;
+}
+/* gestisco le icone */
+#carousel .bi{
+    color: grey;
+    font-size: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+#prev{
+    top: 10px;
+}
+#next{
+    bottom: 10px;
 }
