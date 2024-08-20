@@ -25,3 +25,58 @@ con un bordo. Tra queste miniature, quella corrispondente all'immagine attiva de
 scegliete voi l'effetto estetico, potete colorarla diversamente rispetto alle altre o aggiungere
 un semplice bordo.
 */
+
+// FASE DI PREPARAZIONE
+// preparo le sorgenti dell'immagine
+const sources = ['img/01.webp','img/02.webp','img/03.webp','img/04.webp','img/05.webp'];
+// prendo gli elementi che mi interessano dal DOM
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+const carouselGallery = document.querySelector('.gallery');
+
+// ora devo generare le immagini da Js
+for(let i = 0; i < sources.length; i++){
+    const src = sources[i];
+    const image = document.createElement('img');
+    image.src = src;
+    image.alt =`hero${i + 1}`
+    // ora devo inserire img nella gallery
+    carouselGallery.appendChild(image);
+}
+const images = document.querySelectorAll('#carousel img');
+// rendiamo visibile la prima img
+let currentActiveIndex = 0;
+images[currentActiveIndex].classList.add('active');
+
+// gestiamo ora gli eventi dinamici
+// gestiamo il tasto next
+nextButton.addEventListener('click', function(){
+
+    // togliamo la classe active all'immagina attualmente attiva
+    images[currentActiveIndex].classList.remove('active');
+
+    // incremento indice
+    currentActiveIndex++;
+
+    // controlliamo se siamo fuori array 
+    if(currentActiveIndex === images.length){
+        currentActiveIndex= 0;
+    }
+
+    console.log(currentActiveIndex, images);
+
+    // mettiamo la classe active all'immagine successiva
+    images[currentActiveIndex].classList.add('active');
+
+})
+// gestiamo il tasto previous
+prevButton.addEventListener('click', function(){
+    images[currentActiveIndex].classList.remove('active');
+    //DECREMTNO INDICE
+    currentActiveIndex--;
+    // faccio il controllo se sono arrivata all'inizio
+    if(currentActiveIndex < 0){
+        currentActiveIndex = images.length - 1;
+    }
+    images[currentActiveIndex].classList.add('active');
+})
