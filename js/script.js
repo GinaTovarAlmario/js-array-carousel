@@ -39,18 +39,13 @@ const thumbnailsGallery = document.getElementById('thumbnails');
 // ora devo generare le immagini da Js
 let imgs = '';
 for(let i = 0; i < sources.length; i++){
-    // const src = sources[i];
-    // const image = document.createElement('img');
-    // image.src = src;
-    // image.alt =`hero${i + 1}`
-    // // ora devo inserire img nella gallery
-    // carouselGallery.appendChild(image);
     const currentElement = sources[i];
     imgs += `<img alt="hero${i+1}" src="${currentElement}">`;
 }
+// metto in pagina le immagini carousel and thumbnails
 carouselGallery.innerHTML = imgs;
 thumbnailsGallery.innerHTML = imgs;
-
+// raccolgo tutte le immagini carousel e thumbnails
 const images = document.querySelectorAll('#carousel img');
 const thumbs = document.querySelectorAll('#thumbnails img');
 
@@ -65,6 +60,7 @@ nextButton.addEventListener('click', function(){
 
     // togliamo la classe active all'immagina attualmente attiva
     images[currentActiveIndex].classList.remove('active');
+    thumbs[currentActiveIndex].classList.remove('active');
 
     // incremento indice
     currentActiveIndex++;
@@ -78,11 +74,14 @@ nextButton.addEventListener('click', function(){
 
     // mettiamo la classe active all'immagine successiva
     images[currentActiveIndex].classList.add('active');
+    thumbs[currentActiveIndex].classList.add('active');
 
 })
 // gestiamo il tasto previous
 prevButton.addEventListener('click', function(){
     images[currentActiveIndex].classList.remove('active');
+    thumbs[currentActiveIndex].classList.remove('active');
+
     //DECREMTNO INDICE
     currentActiveIndex--;
     // faccio il controllo se sono arrivata all'inizio
@@ -90,4 +89,6 @@ prevButton.addEventListener('click', function(){
         currentActiveIndex = images.length - 1;
     }
     images[currentActiveIndex].classList.add('active');
+    thumbs[currentActiveIndex].classList.add('active');
+
 })

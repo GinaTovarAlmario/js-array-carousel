@@ -62,6 +62,7 @@
     width: 19%;
     border-radius: 10px;
     filter: grayscale(1);
+    cursor: pointer;
 }
 #thumbnails img.active {
     filter: grayscale(0);
