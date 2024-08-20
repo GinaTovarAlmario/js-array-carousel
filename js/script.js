@@ -33,21 +33,32 @@ const sources = ['img/01.webp','img/02.webp','img/03.webp','img/04.webp','img/05
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 const carouselGallery = document.querySelector('.gallery');
+// vado a considerare ora le img del thumbnails
+const thumbnailsGallery = document.getElementById('thumbnails');
 
 // ora devo generare le immagini da Js
+let imgs = '';
 for(let i = 0; i < sources.length; i++){
-    const src = sources[i];
-    const image = document.createElement('img');
-    image.src = src;
-    image.alt =`hero${i + 1}`
-    // ora devo inserire img nella gallery
-    carouselGallery.appendChild(image);
+    // const src = sources[i];
+    // const image = document.createElement('img');
+    // image.src = src;
+    // image.alt =`hero${i + 1}`
+    // // ora devo inserire img nella gallery
+    // carouselGallery.appendChild(image);
+    const currentElement = sources[i];
+    imgs += `<img alt="hero${i+1}" src="${currentElement}">`;
 }
+carouselGallery.innerHTML = imgs;
+thumbnailsGallery.innerHTML = imgs;
+
 const images = document.querySelectorAll('#carousel img');
+const thumbs = document.querySelectorAll('#thumbnails img');
+
+
 // rendiamo visibile la prima img
 let currentActiveIndex = 0;
 images[currentActiveIndex].classList.add('active');
-
+thumbs[currentActiveIndex].classList.add('active');
 // gestiamo ora gli eventi dinamici
 // gestiamo il tasto next
 nextButton.addEventListener('click', function(){

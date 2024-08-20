@@ -46,3 +46,24 @@
 #next{
     bottom: 10px;
 }
+/* THUMBNAILS */
+#thumbnails{
+    width: 600px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+}
+/* gestisco le immagini */
+#thumbnails img {
+    height: 100%;
+    width: 19%;
+    border-radius: 10px;
+    filter: grayscale(1);
+}
+#thumbnails img.active {
+    filter: grayscale(0);
+    box-shadow: 0  0 10px red;
+}
